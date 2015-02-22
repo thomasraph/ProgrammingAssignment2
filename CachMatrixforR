@@ -1,0 +1,43 @@
+##Assignment cache matrix
+r<-makeCacheMatrix <- function(x = matrix()) {
+  r<-NULL ##setting m to null
+  y<-NULL ##setting y to null
+  inv<-Null ##setting inv to null
+  set<-function(y){
+    x<<-y
+    r<<-NULL
+  }
+  get<-function() r
+  setmatrix<-function(solve) r<<- solve
+  getmatrix<-function() r
+  list(set=set, get=get, setmatrix=setmatrix, getmatrix=getmatrix, setinverse=setinverse getinverse=getinverse) 
+} ##identifying four matricies possible
+r$get()
+
+##cache solving  to get the invversematrix
+cacheSolve <- function(x=matrix(), ...) {
+  r<-x$getinverse()
+  if(!is.null(r)){
+    if(x$setmatrix() == x$getmatrix())}
+    return(inv)
+  }
+matrix<-x$getmatrix
+x$setmatrix(y)
+  d<-r$get()
+  inv<-solve(d) ##inverse solveing for matrix
+    r$setinverse(inv) ##set matrix to be inversed to cache solve
+  r
+}
+  
+##Attempted
+  > r = rbind(c(3, 6, 9), c(12, 15, 18))
+> r$get()
+      [,1]  [,2]
+[1,]  1.00 -0.25
+[2,] -0.25  1.00
+> Cachesolve(r) ##spelled it wrong
+Error: could not find function "Cachesolve"
+> cacheSolve(r)
+          [,1]      [,2]
+[1,] 1.0666667 0.2666667
+[2,] 0.2666667 1.0666667
