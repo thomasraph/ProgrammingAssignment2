@@ -1,0 +1,29 @@
+##Assignment cache matrix
+matrix(c(a,b,d),dim=c(2,2,1))
+r<-makeCacheMatrix <- function(x = matrix()) {
+  m<-NULL ##setting m to null
+  y<-NULL ##setting y to null
+  set<-function(y){
+    x<<-y
+    m<<-NULL
+  }
+  get<-function() x
+  setmatrix<-function(solve) m<<- solve
+  getmatrix<-function() m
+  list(set=set, get=get, setmatrix=setmatrix, getmatrix=getmatrix, setinverse=setinverse getinverse=getinverse) 
+} ##identifying four matricies possible
+
+
+##cache solving  to get the invversematrix
+cacheSolve <- function(x=matrix(), ...) {
+  m<-x$getinverse()
+  if(!is.null(m)){
+    if(x$setmatrix() == x$getmatrix())}
+    return(m)
+  }
+ymatrix<-x$getmatrix
+x$setmatrix(y)
+  m<-solve(ymatrix, ...) ##value of inputed matrix inversed
+  x$setinverse(m) ##set matrix to be inversed to cache solve
+  m
+}
